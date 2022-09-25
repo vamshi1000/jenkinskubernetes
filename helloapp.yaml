@@ -1,0 +1,32 @@
+apiVersion: apps/v1 
+kind: Deployment    
+metadata:       
+  name: helloappjenkinscicd
+spec:          
+  selector:    
+    matchLabels:
+      app: helloappjenkinscicd
+  replicas: 2     
+  template:
+    metadata:
+      labels:      
+        app: helloappjenkinscicd
+    spec:
+      containers:
+        - name: helloappjenkinscicd
+          image: 
+          ports:
+            - containerPort: 8080
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: helloappjenkinscicd-svc
+      labels:
+        name: helloappjenkinscicd
+    spec:
+      ports:
+        - port: 8080      
+      selector:           
+        app: helloappjenkinscicd
+      type: LoadBalancer
