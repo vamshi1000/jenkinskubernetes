@@ -4,7 +4,7 @@
    - name: remove rev data
      shell:  rm -rf /home/azureusr/workspace
    - name: clone repo
-     shell: git clone https://github.com/devops4all77/jenkinsakscicd.git /home/azureusr/workspace
+     shell: git clone https://github.com/vamshi1000/jenkinskubernetes.git /home/vamshi/workspace
    - name: login to azure 
      shell: az login --service-principal -u {{AZURECLIENTID}} -p {{AZURECLIENTSECRET}} -t {{AZURETENANTID}}
    - name: set sub
@@ -12,7 +12,7 @@
    - name: get creds of aks 
      shell: az aks get-credentials -g {{aksrg}} -n {{akscls}}
    - name: delete old version
-     shell: kubectl delete -f /home/azureusr/workspace/helloapp.yaml
+     shell: kubectl delete -f /home/vamshi/workspace/helloapp.yaml
    - name: deploy to aks
-     shell: kubectl apply -f /home/azureusr/workspace/helloapp.yaml
+     shell: kubectl apply -f /home/vamshi/workspace/helloapp.yaml
      
