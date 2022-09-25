@@ -2,7 +2,7 @@
   become: true
   tasks:
    - name: remove rev data
-     shell:  rm -rf /home/azureusr/workspace
+     shell:  rm -rf /home/vamshi/workspace
    - name: clone repo
      shell: git clone https://github.com/vamshi1000/jenkinskubernetes.git /home/vamshi/workspace
    - name: login to azure 
