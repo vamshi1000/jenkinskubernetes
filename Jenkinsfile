@@ -2,12 +2,12 @@ pipeline{
     agent any
     environment {
       DOCKER_TAG = getVersion()
-	  aksrg = ""
-	  akscls = ""
-	  acrname = ""
-	  acr_username = ""
-	  AZURETENANTID = ""
-	  AZURESUBSCRIPTIONID = ""
+	  aksrg = "Demo"
+	  akscls = "kubernates142"
+	  acrname = "acrdemo142.azurecr.io"
+	  acr_username = "acrdemo142"
+	  AZURETENANTID = "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61"
+	  AZURESUBSCRIPTIONID = "6003c517-c410-4a40-b9c5-2e288251125e"
     }
     stages{
         stage('init'){
@@ -32,7 +32,7 @@ pipeline{
         stage('Deploy'){
             steps{
 			withCredentials([usernamePassword(credentialsId: 'spauth', passwordVariable: 'AZURECLIENTSECRET', usernameVariable: 'AZURECLIENTID')]) {
-              ansiblePlaybook credentialsId: '496c76de-ea13-4d0f-a945-fec687b54851', disableHostKeyChecking: true, extras: '-e "DOCKER_TAG=${DOCKER_TAG} aksrg=${aksrg} akscls=${akscls}  AZURECLIENTID=${AZURECLIENTID}  AZURECLIENTSECRET=${AZURECLIENTSECRET}  AZURETENANTID=${AZURETENANTID}  AZURESUBSCRIPTIONID=${AZURESUBSCRIPTIONID}"', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+              ansiblePlaybook credentialsId: 'ansibleserver', disableHostKeyChecking: true, extras: '-e "DOCKER_TAG=${DOCKER_TAG} aksrg=${aksrg} akscls=${akscls}  AZURECLIENTID=${AZURECLIENTID}  AZURECLIENTSECRET=${AZURECLIENTSECRET}  AZURETENANTID=${AZURETENANTID}  AZURESUBSCRIPTIONID=${AZURESUBSCRIPTIONID}"', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
 			  }
             }
         }
