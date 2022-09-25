@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: helloappjenkinscicd
-          image: 
+          image: acrdemo142.azurecr.io/helloapp:latest 
           ports:
             - containerPort: 8080
 ---
