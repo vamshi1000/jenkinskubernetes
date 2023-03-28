@@ -8,6 +8,7 @@ pipeline{
 	  acr_username = "acrdemo142"
 	  AZURETENANTID = "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61"
 	  AZURESUBSCRIPTIONID = "6003c517-c410-4a40-b9c5-2e288251125e"
+	    #test commit
     }
     stages{
         stage('init'){
